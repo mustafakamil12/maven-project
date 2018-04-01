@@ -31,14 +31,14 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                        sh "ssh-keygen -R 52.90.87.6"
+                        
                         sh "scp -i /Users/mustafaalogaidi/Desktop/SSH/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
                     }
                 }
 
                 stage ("Deploy to Production"){
                     steps {
-                        sh "ssh-keygen -R 52.90.188.107"
+                        
                         sh "scp -i /Users/mustafaalogaidi/Desktop/SSH/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
                     }
                 }
